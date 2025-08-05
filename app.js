@@ -30,16 +30,11 @@ io.on('connection', socket => {
 
 app.use('/api',require('./router/api/index.js'))
 chokidar.watch(excelPath).on('change', () => {
-  console.log('📁 Excel file changed!');
+  console.log(' Excel file changed!');
   io.emit('excel-updated');
 });
-app.post('/api/admin/trigger-update', (req, res) => {
-  io.emit('utilization-update'); 
-  res.send({ success: true });
-});
-
 
 server.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(` Server running on http://localhost:${PORT}`);
   });
   
